@@ -31,7 +31,6 @@ public class ScrapCIBOffers {
 //        System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome");
         System.out.println("--- Start Scrapping ---");
 
-
         // change driver to chrome or any other browser you have on your pc
         FirefoxOptions options = new FirefoxOptions();
         // change the browser binary or exe location on your pc
@@ -51,7 +50,7 @@ public class ScrapCIBOffers {
 
         System.out.println("Result: " + totalPages + " ,No. of pages: " + totalPagesInt);
 
-        for (int i = 1; i < totalPagesInt; i++) {
+        for (int i = 1; i <= totalPagesInt; i++) {
             List<Offers> offers = new ArrayList<>();
             driver.get(BASE_URL + "pageno=" + i);
             System.out.println(BASE_URL + "pageno=" + i);

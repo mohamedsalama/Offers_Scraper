@@ -12,7 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,18 +22,22 @@ public class ScrapCIBOffers {
 
     private final OffersRepository offersRepo;
 
-    private final static String BASE_URL = "https://www.cibeg.com/en/personal/offers-and-loyalty/offers?";
-    private final static String IMAGE_URL = "https://www.cibeg.com";
+    private static final String BASE_URL = "https://www.cibeg.com/en/personal/offers-and-loyalty/offers?";
+    private static final String IMAGE_URL = "https://www.cibeg.com";
 
-//    @Scheduled(cron = "0 * * * * *") // 0 * * * * * every min
+    //    @Scheduled(cron = "0 * * * * *") // 0 * * * * * every min
     public void scrap() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
 //        System.setProperty("webdriver.chrome.driver", "/usr/bin/google-chrome");
         System.out.println("--- Start Scrapping ---");
 
+
+        // change driver to chrome or any other browser you have on your pc
         FirefoxOptions options = new FirefoxOptions();
+        // change the browser binary or exe location on your pc
         options.setBinary("/usr/bin/firefox-esr");
 
+        // change FirefoxDriver here to your browser above
         WebDriver driver = new FirefoxDriver(options);
 
         // launch Fire fox and direct it to the Base URL
